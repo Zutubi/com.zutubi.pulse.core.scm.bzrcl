@@ -48,8 +48,11 @@
 
     <target name="src.package">
         <ivy:info/>
+        <mkdir dir="${build.dir}"/>
+        <property name="archive" value="${build.dir}/${ivy.module}.tar.gz"/>
+        <delete file="${archive}"/>
         <exec executable="hg">
-            <arg line="archive -p ${ivy.module} ${build.dir}/${ivy.module}.tar.gz"/>
+            <arg line="archive -p ${ivy.module} ${archive}"/>
         </exec>
     </target>
 
